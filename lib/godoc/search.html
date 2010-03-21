@@ -1,0 +1,68 @@
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+
+{.section Accurate}
+{.or}
+	<p>
+	<span class="alert" style="font-size:120%">Indexing in progress - result may be inaccurate</span>
+	</p>
+{.end}
+{.section Alt}
+	<p>
+	<span class="alert" style="font-size:120%">Did you mean: </span>
+	{.repeated section Alts}
+		<a href="search?q={@|html-esc}" style="font-size:120%">{@|html}</a>
+	{.end}
+	</p>
+{.end}
+{.section Hit}
+	{.section Decls}
+		<h2 id="Global">Package-level declarations</h2>
+		{.repeated section @}
+			<h3 id="Global_{Pak.Path|url-pkg}">package <a href="{Pak.Path|url-pkg}">{Pak.Name|html}</a></h3>
+			{.repeated section Files}
+				{.repeated section Groups}
+					{.repeated section Infos}
+						<a href="{File.Path|url-src}?h={Query|html-esc}#L{@|infoLine}">{File.Path|url-src}:{@|infoLine}</a>
+						<pre>{@|infoSnippet}</pre>
+					{.end}
+				{.end}
+			{.end}
+		{.end}
+	{.end}
+	{.section Others}
+		<h2 id="Local">Local declarations and uses</h2>
+		{.repeated section @}
+			<h3 id="Local_{Pak.Path|url-pkg}">package <a href="{Pak.Path|url-pkg}">{Pak.Name|html}</a></h3>
+			{.repeated section Files}
+				<a href="{File.Path|url-src}?h={Query|html-esc}">{File.Path|url-src}</a>
+				<table class="layout">
+				{.repeated section Groups}
+					<tr>
+					<td width="25"></td>
+					<th align="left" valign="top">{Kind|infoKind}</th>
+					<td align="left" width="4"></td>
+					<td>
+					{.repeated section Infos}
+						<a href="{File.Path|url-src}?h={Query|html-esc}#L{@|infoLine}">{@|infoLine}</a>
+					{.end}
+					</td>
+					</tr>
+				{.end}
+				</table>
+			{.end}
+		{.end}
+	{.end}
+{.end}
+{.section Illegal}
+	<p>
+	<span class="alert" style="font-size:120%">Illegal query syntax</span>
+	</p>
+	<p>
+	A legal query is a single identifier (such as <a href="search?q=ToLower">ToLower</a>)
+	or a qualified identifier (such as <a href="search?q=math.Sin">math.Sin</a>).
+	</p>
+{.end}

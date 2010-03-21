@@ -1,0 +1,113 @@
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+
+{.section PAst}
+	<pre>
+	{@|html}
+	</pre>
+{.end}
+{.section PDoc}
+	<!-- PackageName is printed as title by the top-level template -->
+	{.section IsPkg}
+		<p><code>import "{ImportPath|html}"</code></p>
+	{.end}
+	{Doc|html-comment}
+	{.section IsPkg}
+		{.section Filenames}
+			<p>
+			<h4>Package files</h4>
+			<span style="font-size:90%">
+			{.repeated section @}
+				<a href="{@|url-src}">{@|localname}</a>
+			{.end}
+			</span>
+			</p>
+		{.end}
+	{.end}
+	{.section Consts}
+		<h2 id="Constants">Constants</h2>
+		{.repeated section @}
+			{Doc|html-comment}
+			<pre>{Decl|html}</pre>
+		{.end}
+	{.end}
+	{.section Vars}
+		<h2 id="Variables">Variables</h2>
+		{.repeated section @}
+			{Doc|html-comment}
+			<pre>{Decl|html}</pre>
+		{.end}
+	{.end}
+	{.section Funcs}
+		{.repeated section @}
+			<h2 id="{Name|html-esc}">func <a href="{Decl|url-pos}">{Name|html}</a></h2>
+			<p><code>{Decl|html}</code></p>
+			{Doc|html-comment}
+		{.end}
+	{.end}
+	{.section Types}
+		{.repeated section @}
+			<h2 id="{Type.Name|html-esc}">type <a href="{Decl|url-pos}">{Type.Name|html}</a></h2>
+			{Doc|html-comment}
+			<p><pre>{Decl|html}</pre></p>
+			{.repeated section Consts}
+				{Doc|html-comment}
+				<pre>{Decl|html}</pre>
+			{.end}
+			{.repeated section Vars}
+				{Doc|html-comment}
+				<pre>{Decl|html}</pre>
+			{.end}
+			{.repeated section Factories}
+				<h3 id="{Type.Name|html-esc}.{Name|html-esc}">func <a href="{Decl|url-pos}">{Name|html}</a></h3>
+				<p><code>{Decl|html}</code></p>
+				{Doc|html-comment}
+			{.end}
+			{.repeated section Methods}
+				<h3 id="{Type.Name|html-esc}.{Name|html-esc}">func ({Recv|html}) <a href="{Decl|url-pos}">{Name|html}</a></h3>
+				<p><code>{Decl|html}</code></p>
+				{Doc|html-comment}
+			{.end}
+		{.end}
+	{.end}
+	{.section Bugs}
+		<h2 id="Bugs">Bugs</h2>
+		{.repeated section @}
+		{@|html-comment}
+		{.end}
+	{.end}
+{.end}
+{.section PList}
+	<h2>Other packages</h2>
+	<p>
+	{.repeated section @}
+	<a href="?p={@|html}">{@|html}</a><br />
+	{.end}
+	</p>
+{.end}
+{.section Dirs}
+	<h2 id="Subdirectories">Subdirectories</h2>
+	<p>
+	<table class="layout">
+	<tr>
+	<th align="left" colspan="{MaxHeight|html-esc}">Name</th>
+	<td width="25">&nbsp;</td>
+	<th align="left">Synopsis</th>
+	</tr>
+	<tr>
+	<th align="left"><a href="..">..<a></th>
+	</tr>
+	{.repeated section List}
+		<tr>
+		{Depth|padding}
+		<td align="left" colspan="{Height|html-esc}"><a href="{Path|html-esc}">{Name|html}<a></td>
+		<td></td>
+		<td align="left">{Synopsis|html}</td>
+		</tr>
+	{.end}
+	</table>
+	</p>
+{.end}

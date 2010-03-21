@@ -1,0 +1,95 @@
+{.section PAst}
+{@}
+{.end}
+{.section PDoc}
+{.section IsPkg}
+PACKAGE
+
+package {PackageName}
+import "{ImportPath}"
+{.or}
+COMMAND DOCUMENTATION
+{.end}
+{.section Doc}
+
+{@}
+{.end}
+{.section Consts}
+
+CONSTANTS
+
+{.repeated section @}
+{Decl}
+{Doc}
+{.end}
+{.end}
+{.section Vars}
+
+VARIABLES
+
+{.repeated section @}
+{Decl}
+{Doc}
+{.end}
+{.end}
+{.section Funcs}
+
+FUNCTIONS
+
+{.repeated section @}
+{Decl}
+{Doc}
+{.end}
+{.end}
+{.section Types}
+
+TYPES
+
+{.repeated section @}
+{Decl}
+{Doc}
+{.repeated section Consts}
+{Decl}
+{Doc}
+{.end}
+{.repeated section Vars}
+{Decl}
+{Doc}
+{.end}
+{.repeated section Factories}
+{Decl}
+{Doc}
+{.end}
+{.repeated section Methods}
+{Decl}
+{Doc}
+{.end}
+{.end}
+{.end}
+{.section Bugs}
+
+BUGS
+
+{.repeated section @}
+{@}
+{.end}
+{.end}
+{.end}
+{.section PList}
+
+OTHER PACKAGES
+
+{.repeated section @}
+{@}
+{.end}
+{.end}
+{.section Dirs}
+{.section Dirs}
+
+SUBDIRECTORIES
+
+{.repeated section List}
+	{Name}
+{.end}
+{.end}
+{.end}
